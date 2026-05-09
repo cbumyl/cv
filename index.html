@@ -426,29 +426,8 @@
     .edu-grid {
       position: relative;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-    }
-
-    .edu-grid::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 14px;
-      bottom: 14px;
-      width: 1px;
-      background: rgba(156, 132, 99, 0.26);
-    }
-
-    .edu-grid::after {
-      content: "";
-      position: absolute;
-      left: calc(50% - 6px);
-      top: 16px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #b09b78;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
     }
 
     .edu-card {
@@ -517,6 +496,8 @@
       padding: 24px 28px 26px;
       border-radius: 16px;
     }
+
+    .experience-card + .experience-card { margin-top: 18px; }
 
     .pill-date {
       display: inline-flex;
@@ -590,6 +571,81 @@
       min-height: 292px;
       object-fit: cover;
       object-position: top left;
+    }
+
+    .carousel {
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 12px;
+    }
+
+    .carousel-frame {
+      overflow: hidden;
+      border: 1px solid rgba(164, 142, 108, 0.18);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 260ms ease;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      min-width: 100%;
+      margin: 0;
+      background: #fff;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 340px;
+      object-fit: contain;
+      object-position: center center;
+      background: #fff;
+    }
+
+    .carousel-caption {
+      display: block;
+      padding: 9px 12px 11px;
+      color: #756c60;
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 1.35;
+      border-top: 1px solid rgba(164, 142, 108, 0.16);
+      background: #fffdf8;
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .carousel-btn {
+      display: inline-grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(164, 142, 108, 0.30);
+      border-radius: 999px;
+      background: rgba(255, 253, 248, 0.86);
+      color: #5b5146;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(93, 69, 47, 0.07);
+    }
+
+    .carousel-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 1.8;
+    }
+
+    .carousel-count {
+      color: #786f63;
+      font-size: 13px;
     }
 
     .project-copy h3 {
@@ -727,7 +783,6 @@
       .portrait-arch { height: 440px; }
       .metrics, .proof-grid, .value-cards { grid-template-columns: repeat(2, 1fr); }
       .edu-grid { gap: 18px; }
-      .edu-grid::before, .edu-grid::after { display: none; }
       .about-text { border-left: 0; padding-left: 0; }
       .skill-col { border-right: 0; border-bottom: 1px solid rgba(233, 222, 207, 0.18); }
       .skill-col:last-child { border-bottom: 0; }
@@ -745,7 +800,9 @@
       .metric + .metric::before { display: none; }
       .entry-top, .footer-inner { flex-direction: column; align-items: flex-start; }
       .project-card { padding: 14px; }
-      .project-image img { min-height: 210px; }
+      .project-image img,
+      .carousel-slide img { min-height: 210px; }
+      .carousel-slide img { height: 230px; }
     }
   </style>
 </head>
@@ -759,7 +816,7 @@
         <a href="#experience">实习</a>
         <a href="#projects">项目</a>
         <a href="#skills">能力</a>
-        <a href="mailto:2359618694@qq.com">联系</a>
+        <a href="mailto:yeurekal@gmail.com">联系</a>
       </div>
     </nav>
   </header>
@@ -769,18 +826,14 @@
       <div>
         <p class="kicker">Data Analysis Portfolio</p>
         <h1>用数据定位问题<br />用实验验证判断<br />用看板推动行动</h1>
-        <p class="hero-lead">深圳大学与法国南特高等商学院双学位在读，定位数据分析 / 商业分析 / 增长分析候选人，擅长从业务问题拆解、SQL 指标计算、漏斗与留存诊断，到 AB 实验评估和 Dashboard 汇报形成闭环。</p>
+        <p class="hero-lead">深圳大学与法国南特高等商学院双学位在读，法国南特高等商学院金融科技与风险控制硕士 Offer 已获。定位数据分析实习候选人，擅长从业务问题拆解、SQL 指标计算、漏斗与留存诊断，到 AB 实验评估和 Tableau / Dashboard 汇报形成闭环。</p>
         <div class="actions">
           <a class="btn btn-primary" href="#projects">查看核心项目
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
           </a>
-          <a class="btn" href="mailto:2359618694@qq.com">
+          <a class="btn" href="mailto:yeurekal@gmail.com">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
             发送邮件
-          </a>
-          <a class="btn" href="网页/assets/resume-en.pdf" target="_blank" rel="noreferrer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-            英文简历 PDF
           </a>
         </div>
       </div>
@@ -803,19 +856,19 @@
   <div class="container metrics" aria-label="关键指标">
     <div class="metric">
       <div class="metric-number">业务诊断</div>
-      <div class="metric-label">把模糊增长问题拆成指标口径、分层假设与可验证证据链</div>
+      <div class="metric-label">搭建指标体系、漏斗分析、留存分析、渠道贡献拆解与异常诊断闭环</div>
     </div>
     <div class="metric">
       <div class="metric-number">SQL 建模</div>
-      <div class="metric-label">用 CTE、窗口函数与 DuckDB 搭建清洗层、集市层和分析口径</div>
+      <div class="metric-label">用 DuckDB、CTE、窗口函数、多表 JOIN 完成数据生成、清洗、校验与报告输出</div>
     </div>
     <div class="metric">
       <div class="metric-number">实验评估</div>
-      <div class="metric-label">从漏斗断点定位到 AB 方案评估，判断动作是否真正有效</div>
+      <div class="metric-label">设计 AB 实验与 ITT 口径评估，验证动作对核心转化指标的真实影响</div>
     </div>
     <div class="metric">
       <div class="metric-number">看板叙事</div>
-      <div class="metric-label">把分析结果整理成老板能复盘、团队能执行的 Dashboard 与汇报</div>
+      <div class="metric-label">输出 Tableau 看板、麦肯锡风格 PPT、指标口径字典与结论先行汇报</div>
     </div>
   </div>
 
@@ -826,22 +879,22 @@
         <h2>一个偏业务诊断的<br />数据分析候选人</h2>
       </div>
       <div class="about-text">
-        <p>比起只展示工具标签，我更重视把模糊的业务问题变成可计算指标、可追踪证据和可验证动作，让分析结果能进入复盘、实验和决策。</p>
+        <p>我关注数据分析从“问题定义”到“指标口径”再到“业务动作”的完整链路。相比只展示工具标签，我更重视把模糊业务问题拆成可计算指标、可复核数据链路、可验证实验方案和可执行的复盘材料。</p>
         <div class="value-cards">
           <article class="mini-card">
             <div class="mini-icon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor"><path d="M4 5h16v14H4z"/><path d="M7 9h10M7 13h5"/></svg></div>
             <h3>业务问题拆解</h3>
-            <p>从用户、渠道、产品与运营视角拆解问题，明确衡量与分析路径。</p>
+            <p>从用户、渠道、产品与运营视角拆解问题，沉淀“问题 - 证据 - 动作”分析框架。</p>
           </article>
           <article class="mini-card">
             <div class="mini-icon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v9l7-4"/></svg></div>
             <h3>指标体系构建</h3>
-            <p>搭建可追踪的指标口径、事件结构及留存与漏斗图谱。</p>
+            <p>搭建首单支付率、D1 留存率、渠道贡献、漏斗转化等可复核指标体系。</p>
           </article>
           <article class="mini-card">
             <div class="mini-icon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5M12 16V8M16 16v-8"/></svg></div>
             <h3>看板与叙事</h3>
-            <p>输出可被老板和团队理解的材料，把诊断转为复盘。</p>
+            <p>用 Tableau 看板、结构化 PPT 与指标口径字典，把分析结果转成团队可执行语言。</p>
           </article>
         </div>
       </div>
@@ -859,10 +912,10 @@
                 <div class="role">金融科技 · 经济学学士</div>
               </div>
             </div>
-            <div class="date">2022.09 - 2026.06</div>
+            <div class="date">2022.09 - 至今</div>
           </div>
           <ul class="bullet-list">
-            <li><strong>核心课程：</strong>人工智能与机器学习、数据库系统、金融计量学、程序设计基础、数据结构、计算机网络。</li>
+            <li><strong>核心课程：</strong>机器学习、数据库系统、金融计量学、数据结构、公司金融。</li>
           </ul>
         </article>
         <article class="edu-card">
@@ -874,10 +927,25 @@
                 <div class="role">金融科技 · 理学学士</div>
               </div>
             </div>
-            <div class="date">2022.09 - 2026.06</div>
+            <div class="date">2022.09 - 至今</div>
           </div>
           <ul class="bullet-list">
-            <li><strong>核心课程：</strong>商务智能分析、计量经济学、公司金融、Excel 财务分析、金融衍生品。</li>
+            <li><strong>核心课程：</strong>商务智能分析、计量经济学、Excel 数据处理、金融衍生品。</li>
+          </ul>
+        </article>
+        <article class="edu-card">
+          <div class="entry-top">
+            <div class="entry-head">
+              <img class="logo" src="网页/audencia-logo.webp" alt="法国南特高等商学院硕士" />
+              <div>
+                <div class="org">法国南特高等商学院</div>
+                <div class="role">金融科技与风险控制 · 理学硕士</div>
+              </div>
+            </div>
+            <div class="date">Offer 已获</div>
+          </div>
+          <ul class="bullet-list">
+            <li><strong>方向衔接：</strong>继续强化金融科技、风险控制、数据建模与商业分析能力。</li>
           </ul>
         </article>
       </div>
@@ -897,9 +965,9 @@
           <div class="pill-date">2025.07 - 2025.09</div>
         </div>
         <ul class="bullet-list">
-          <li><strong>研究框架：</strong>围绕私募管理人竞争格局与产品策略，搭建“策略类型 - 收益风险 - 费率渠道”分析框架，完成竞品对比与市场行情两类专题材料。</li>
-          <li><strong>数据底稿：</strong>使用 Wind 及公开渠道构建 Excel/CSV 数据底稿，统一收益、回撤、费率等字段口径，并结合爬虫与 AI Agent 完成字段清洗、归类和可视化对比。</li>
-          <li><strong>复盘支持：</strong>基于周度跟踪输出管理人优劣势、阶段性机会观察和跟踪清单，将分散信息整理为“结论 - 证据 - 动作”模板，支持团队业务复盘与沟通。</li>
+          <li><strong>指标底稿搭建：</strong>围绕私募管理人竞争格局与产品策略，搭建“策略类型 - 收益风险 - 费率渠道”分析框架，使用 Wind 及公开渠道构建 Excel/CSV 数据底稿，覆盖 <strong>50+ 私募管理人、30+ 款产品</strong>，统一 <strong>12 项核心字段</strong>口径，数据底稿准确率达 <strong>99.8%</strong>。</li>
+          <li><strong>数据自动化提效：</strong>借助<strong>多 AI Agent 与爬虫工具协同</strong>完成字段清洗、归类及可视化对比，自主<strong>调试 AI 提示词</strong>优化数据处理脚本，将周度复盘材料整理效率提升 <strong>40% 以上</strong>，材料一致性与可复核性提升至 <strong>98%</strong>。</li>
+          <li><strong>经营复盘支持：</strong>基于周度跟踪输出 <strong>50+ 私募管理人</strong>优劣势及阶段性机会观察，整理为“结论 - 证据 - 动作”模板，输出周度复盘报告，助力团队优化管理人筛选效率 <strong>25%+</strong>。</li>
         </ul>
         <div class="proof-grid">
           <figure class="proof"><img src="网页/私募选图.png" alt="市场低吸与管理人数据" /><span>市场低吸与管理人数据</span></figure>
@@ -908,26 +976,65 @@
           <figure class="proof"><img src="网页/market-analysis.webp" alt="月度收益 Top5 排行" /><span>月度收益 Top5 排行</span></figure>
         </div>
       </article>
+
+      <article class="experience-card">
+        <div class="entry-top">
+          <div class="entry-head">
+            <img class="logo" src="网页/sdic-logo.webp" alt="国投证券" />
+            <div>
+              <div class="org">国投证券股份有限公司</div>
+              <div class="role">私募业务部实习生</div>
+            </div>
+          </div>
+          <div class="pill-date">2025.01 - 2025.03</div>
+        </div>
+        <ul class="bullet-list">
+          <li><strong>经营分析跟踪：</strong>参与私募业务周度/阶段性经营分析，跟踪私募产品表现、市场变化与渠道反馈，建立周度跟踪表，覆盖 <strong>8 项核心指标</strong>，沉淀 <strong>12 条阶段性观察结论</strong>，推动复盘效率提升 <strong>30%+</strong>。</li>
+          <li><strong>数据口径对齐：</strong>协同产品、销售与中后台统一<strong>核心指标</strong>定义，推进<strong>数据口径对齐</strong>与材料流转，解决 <strong>10+ 处口径不一致问题</strong>，降低跨团队沟通中的口径偏差。</li>
+          <li><strong>结构化交付：</strong>利用 AI 将分散的业务数据与观察结论结构化整理，生成“问题 - 证据 - 动作”标准化汇报模板，自动优化 <strong>20+ 张对比图表</strong>文案与摘要要点，交付准时率达 <strong>100%</strong>。</li>
+        </ul>
+      </article>
     </section>
 
     <section class="container projects" id="projects">
       <div class="section-title"><h2>核心项目</h2><span>Projects</span></div>
       <article class="project-card">
-        <div class="project-image">
-          <img src="网页/quickmart/dashboard/01_overview.png" alt="QuickMart 即时零售分析看板" />
+        <div class="carousel" data-carousel>
+          <div class="carousel-frame">
+            <div class="carousel-track">
+              <figure class="carousel-slide"><img src="网页/quickmart/dashboard/01_overview.png" alt="QuickMart 增长总览看板" /><figcaption class="carousel-caption">01 增长总览：新用户、首单支付、D1 留存与核心漏斗</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/dashboard/02_channel.png" alt="QuickMart 渠道诊断看板" /><figcaption class="carousel-caption">02 渠道诊断：信息流渠道 A 是最大负贡献入口</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/dashboard/03_funnel.png" alt="QuickMart 漏斗诊断看板" /><figcaption class="carousel-caption">03 漏斗诊断：最大断点在结算到支付</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/dashboard/04_inventory.png" alt="QuickMart 库存供给证据链看板" /><figcaption class="carousel-caption">04 库存证据：爆款 SKU 缺货率异常上升</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/dashboard/05_abtest.png" alt="QuickMart AB 实验看板" /><figcaption class="carousel-caption">05 AB 实验：组合方案方向性改善</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/dashboard/06_action.png" alt="QuickMart 行动建议看板" /><figcaption class="carousel-caption">06 行动建议：短期修复交易后段，中期扩大实验验证</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/ppt/01_cover.png" alt="QuickMart 汇报 PPT 封面" /><figcaption class="carousel-caption">PPT 01：Executive Summary 与项目总览</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/ppt/02_overview.png" alt="QuickMart 汇报 PPT 增长诊断总览" /><figcaption class="carousel-caption">PPT 02：增长诊断总览</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/ppt/03_channel.png" alt="QuickMart 汇报 PPT 渠道诊断" /><figcaption class="carousel-caption">PPT 03：渠道诊断</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/ppt/04_funnel.png" alt="QuickMart 汇报 PPT 漏斗诊断" /><figcaption class="carousel-caption">PPT 04：交易后段与漏斗分析</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/ppt/05_inventory.png" alt="QuickMart 汇报 PPT 库存供给证据链" /><figcaption class="carousel-caption">PPT 05：库存供给证据链</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/ppt/06_abtest.png" alt="QuickMart 汇报 PPT AB 实验页" /><figcaption class="carousel-caption">PPT 06：AB 实验方向性验证</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/ppt/07_action.png" alt="QuickMart 汇报 PPT 行动建议" /><figcaption class="carousel-caption">PPT 07：行动建议与表达边界</figcaption></figure>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" type="button" data-carousel-prev aria-label="上一张"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></button>
+            <span class="carousel-count" data-carousel-count>1 / 13</span>
+            <button class="carousel-btn" type="button" data-carousel-next aria-label="下一张"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m9 18 6-6-6-6"/></svg></button>
+          </div>
         </div>
         <div class="project-copy">
-          <h3>QuickMart 即时零售新用户首单转化与留存诊断</h3>
+          <h3>QuickMart 即时零售新用户首单转化与留存诊断项目</h3>
           <div class="tags">
-            <span class="tag">数据分析</span><span class="tag">增长诊断</span><span class="tag">SQL</span><span class="tag">AB 实验</span><span class="tag">Dashboard</span>
+            <span class="tag">DuckDB + SQL</span><span class="tag">漏斗分析</span><span class="tag">D1 留存</span><span class="tag">AB 实验</span><span class="tag">Tableau 看板</span>
           </div>
-          <p>围绕即时零售平台 3 月新用户增长质量波动，搭建从数据清洗、指标计算、异常诊断、原因下钻、AB 实验到看板汇报的完整分析链路。</p>
+          <p>基于即时零售公开数据集，完成从数据生成、清洗、校验、指标建模、异常诊断、原因验证、AB 实验到看板汇报的完整数据分析项目。</p>
           <ul class="bullet-list">
-            <li><strong>数据链路：</strong>基于公开资料调研校准的合成即时零售数据，使用 DuckDB + SQL 构建 10 张原始表、清洗层和分析集市。</li>
-            <li><strong>指标诊断：</strong>构建新用户首单支付率、D1 留存、渠道贡献、漏斗转化、缺货率和实验 lift 指标体系。</li>
-            <li><strong>漏斗定位：</strong>定位最大断点为结算到支付下降 <strong>16.80pp</strong>；首单用户 D1 留存 <strong>44.46%</strong>，明显高于未首单用户。</li>
-            <li><strong>原因验证：</strong>爆款 SKU 缺货率由 <strong>8.04%</strong> 升至 <strong>21.73%</strong>，重点城市缺货上升与转化下降同向。</li>
-            <li><strong>实验评估：</strong>实验组首单支付率从 <strong>4.05%</strong> 提升至 <strong>4.69%</strong>，相对提升 <strong>15.8%</strong>。</li>
+            <li><strong>数据建模与校验：</strong>借助 <strong>Claude Code、Codex</strong> 等 AI Agent 辅助编写 Python 脚本，自主完成数据清洗、整理与重构，形成用户、渠道、商品等 10 张业务明细表，覆盖 <strong>6 万用户、16.7 万行为事件、6.24 万库存快照及 8548 个 AB 实验样本</strong>；输出 Markdown 校验报告，校验覆盖率达 <strong>100%</strong>，将数据异常率从 <strong>1.19% 降至 0.2%</strong>。</li>
+            <li><strong>数据清洗与链路搭建：</strong>使用 <strong>DuckDB + SQL</strong> 建立 raw、clean、mart 三层数据链路，完成 <strong>16.7 万条</strong>行为日志去重、300+ 测试/风险用户过滤、30+ 笔订单时间及金额异常校验，修正 50+ 条错误首单标记，将数据清洗效率提升 <strong>35%+</strong>。</li>
+            <li><strong>指标体系与异常诊断：</strong>搭建<strong>首单支付率、D1 留存率</strong>、渠道贡献等 12 项<strong>核心指标体系</strong>；通过<strong>渠道贡献拆解</strong>识别信息流渠道 A 为 D1 下滑最大负贡献渠道（加权贡献 <strong>-0.0167</strong>），其首单支付率下降 <strong>2.79pp</strong>、D1 留存率下降 <strong>6.95pp</strong>。</li>
+            <li><strong>漏斗下钻与原因验证：</strong>拆解<strong>信息流渠道 A 浏览、加购、结算、支付全链路</strong>，定位<strong>结算到支付为最大断点</strong>（下降 <strong>16.80pp</strong>）；发现<strong>异常期爆款 SKU 缺货率</strong>从 <strong>8.04% 升至 21.73%</strong>，上海、杭州、深圳等<strong>重点城市缺货与转化下降呈同向关系</strong>。</li>
+            <li><strong>AB 实验与交付沉淀：</strong>设计<strong>“库存提示 + 替代推荐 + 优惠券提醒”组合方案</strong>，对 8548 名信息流渠道 A 用户进行<strong>AB 实验</strong>，实验组首单支付率从 <strong>4.05% 提升至 4.69%</strong>（相对提升 <strong>15.8%</strong>）；输出 6 份 <strong>Tableau</strong> 看板、7 页汇报 PPT、<strong>指标口径字典</strong>及 GitHub 交付版。</li>
           </ul>
         </div>
       </article>
@@ -937,15 +1044,35 @@
           <img src="网页/apple-strategy.webp" alt="Apple Intelligence 增长策略项目" />
         </div>
         <div class="project-copy">
-          <h3>Apple Intelligence 增长策略与发布路径设计</h3>
+          <h3>Apple Intelligence 增长策略与发布路径</h3>
           <div class="tags">
             <span class="tag">行业研究</span><span class="tag">增长测算</span><span class="tag">商业分析</span><span class="tag">英文报告</span>
           </div>
-          <p>围绕 AI 手机竞争格局变化，完成资料交叉验证、趋势拆解、战略建议与商业测算，输出英文报告与商赛级 PPT。</p>
+          <p>围绕 GenAI 向 Agentic AI 迁移，完成资料交叉验证、趋势拆解、战略建议与商业测算，输出英文报告与商赛级 PPT。</p>
           <ul class="bullet-list">
-            <li><strong>方法与验证：</strong>基于 <strong>43 条资料</strong> 交叉验证，按行业趋势、竞品路径、商业模式与用户需求变化构建分析框架。</li>
-            <li><strong>核心发现：</strong>识别 GenAI 手机渗透率从 <strong>19% 到 70%</strong>（2024-2028）的结构性机会，明确“功能竞争转向信任竞争”的核心逻辑。</li>
-            <li><strong>交付物：</strong>建立 3 年 <strong>100 亿美元</strong> 投入与收入路径测算，产出 15 页英文商赛级 PPT、英文研究摘要与演讲稿。</li>
+            <li><strong>行业趋势与数据调研：</strong>完成 43 条资料交叉验证，筛选有效资料 38 条，剔除无效信息 12%，分析 GenAI 手机渗透率从 <strong>19% 至 70%</strong>（2024-2028）的结构性变化，建立包含 5 大维度、<strong>18 项指标</strong>的结构化研究表。</li>
+            <li><strong>策略建模与商业测算：</strong>构建“技术基础 - 隐私护城河 - 增长引擎”三支柱框架，建立 3 年 <strong>100 亿美元</strong>投入与收入路径测算，提出 2030 年服务收入超 <strong>1000 亿美元</strong>目标，测算误差控制在 <strong>5% 以内</strong>。</li>
+            <li><strong>汇报交付：</strong><strong>借助 Claude Code、Codex 等 AI Agent 梳理行业研究逻辑、优化 PPT 排版与英文摘要表述</strong>，产出 15 页商赛级 PPT 及英文研究摘要，将复杂行业信息转化为“趋势判断 - 竞争定位 - 增长路径”的结构化汇报，最终获<strong>课程满分</strong>。</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image">
+          <img src="网页/personal-notes-app.webp" alt="个人复盘成长 App" />
+        </div>
+        <div class="project-copy">
+          <h3>个人复盘成长 App</h3>
+          <div class="tags">
+            <span class="tag">AI 提效</span><span class="tag">工作流搭建</span><span class="tag">复盘系统</span><span class="tag">Skill 自动化</span>
+          </div>
+          <p>定位为数据分析与商分研究效率工具，用于展示 AI Agent、提示词调试、知识管理和 Skill 自动化能力。</p>
+          <ul class="bullet-list">
+            <li><strong>Problem：</strong>学习与项目信息分散，难以稳定复用，导致分析效率和复盘质量波动。</li>
+            <li><strong>Approach：</strong>拆解“采集 - 结构化 - 检索 - 输出”流程，基于开源项目与个人需求设计知识管理、项目复盘和数据分析工作流。</li>
+            <li><strong>Key Findings：</strong>高频低价值动作是主要效率损耗点，可通过 Agent 自动化、提示词模板和 Skill 封装降低重复劳动。</li>
+            <li><strong>Recommendations：</strong>以多 Agent 协同替代重复流程，把更多时间集中在业务判断、数据验证、策略推演与汇报表达。</li>
+            <li><strong>Metrics：</strong>通过内容增长与复盘产出验证效果：单条 AI 教学内容播放量 3 万+，单条点赞 + 收藏 3000+。</li>
           </ul>
         </div>
       </article>
@@ -956,19 +1083,19 @@
       <div class="skills-panel">
         <article class="skill-col">
           <div class="skill-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg>A. 数据分析</div>
-          <div class="skill-tags"><span>SQL（CTE）</span><span>DuckDB</span><span>Python</span><span>窗口函数</span><span>CASE WHEN</span><span>指标体系设计</span><span>漏斗转化分析</span><span>cohort 留存</span><span>渠道贡献拆解</span><span>AB 实验评估</span></div>
+          <div class="skill-tags"><span>SQL（DuckDB）</span><span>CTE</span><span>窗口函数</span><span>多表 JOIN</span><span>漏斗计算</span><span>Python pandas</span><span>numpy</span><span>数据生成</span><span>数据清洗</span><span>Excel 数据处理</span></div>
         </article>
         <article class="skill-col">
           <div class="skill-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7l-8-4Z"/><path d="m9 12 2 2 4-5"/></svg>B. 业务诊断</div>
-          <div class="skill-tags"><span>商业问题拆解</span><span>经营分析</span><span>异常诊断</span><span>库存供给分析</span><span>用户需求洞察</span><span>行业趋势研判</span><span>竞争格局分析</span><span>业务 Case 闭环</span></div>
+          <div class="skill-tags"><span>指标体系</span><span>漏斗分析</span><span>留存分析</span><span>渠道贡献拆解</span><span>异常诊断</span><span>AB 实验评估</span><span>业务问题拆解</span><span>结论闭环</span></div>
         </article>
         <article class="skill-col">
           <div class="skill-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M2 12h20"/><path d="m6 6 12 12M18 6 6 18"/></svg>C. 研究与交付</div>
-          <div class="skill-tags"><span>定性 + 定量研究</span><span>竞品扫描</span><span>行业趋势追踪</span><span>结构化报告撰写</span><span>策略 PPT 输出</span><span>管理层材料支持</span><span>Dashboard storytelling</span><span>指标口径字典</span></div>
+          <div class="skill-tags"><span>Tableau 看板</span><span>麦肯锡风格 PPT</span><span>指标口径字典</span><span>分析报告</span><span>结论先行</span><span>英文资料研读</span><span>CET-6</span><span>跨团队协同</span></div>
         </article>
         <article class="skill-col">
           <div class="skill-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>D. AI 提效</div>
-          <div class="skill-tags"><span>Claude Code</span><span>Codex</span><span>Gemini</span><span>GPT</span><span>Antigravity</span><span>提示词调试</span><span>Skill 工作流封装</span><span>信息抓取与整理</span><span>数据清洗自动化</span><span>多 Agent 协同分析</span></div>
+          <div class="skill-tags"><span>GPT</span><span>Claude</span><span>Gemini</span><span>Claude Code</span><span>Codex</span><span>多 AI Agent</span><span>阶段化 Prompt</span><span>SQL 审查</span><span>指标口径统一</span><span>可复用 Skill</span></div>
         </article>
       </div>
     </section>
@@ -978,11 +1105,38 @@
     <div class="container footer-inner">
       <div>© 2026 李泽涛 · 版权所有</div>
       <div class="footer-icons" aria-label="联系方式">
-        <a href="mailto:2359618694@qq.com" aria-label="发送邮件"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+        <a href="mailto:yeurekal@gmail.com" aria-label="发送邮件"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
         <a href="https://github.com/ylylyl123" target="_blank" rel="noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3c3 0 6-2 6-6.5 0-1.3-.5-2.6-1.4-3.5.1-.4.6-1.8-.2-3.5 0 0-1.1-.3-3.6 1.3a12.3 12.3 0 0 0-6.6 0C5.7 1.2 4.6 1.5 4.6 1.5c-.8 1.7-.3 3.1-.2 3.5A5 5 0 0 0 3 8.5C3 13 6 15 9 15a4.8 4.8 0 0 0-1 3v4"/><path d="M9 18c-4.5 2-5-2-7-2"/></svg></a>
         <a href="#top" aria-label="返回顶部"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="m8 12 4-4 4 4"/><path d="M12 16V8"/></svg></a>
       </div>
     </div>
   </footer>
+  <script>
+    document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+      const track = carousel.querySelector(".carousel-track");
+      const slides = Array.from(carousel.querySelectorAll(".carousel-slide"));
+      const count = carousel.querySelector("[data-carousel-count]");
+      const prev = carousel.querySelector("[data-carousel-prev]");
+      const next = carousel.querySelector("[data-carousel-next]");
+      let index = 0;
+
+      function render() {
+        track.style.transform = `translateX(${-index * 100}%)`;
+        count.textContent = `${index + 1} / ${slides.length}`;
+      }
+
+      prev.addEventListener("click", () => {
+        index = (index - 1 + slides.length) % slides.length;
+        render();
+      });
+
+      next.addEventListener("click", () => {
+        index = (index + 1) % slides.length;
+        render();
+      });
+
+      render();
+    });
+  </script>
 </body>
 </html>
