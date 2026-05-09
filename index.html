@@ -225,12 +225,10 @@
       position: relative;
       width: min(490px, 88%);
       height: 526px;
-      overflow: hidden;
-      border-radius: 220px 220px 0 0;
-      background:
-        linear-gradient(180deg, rgba(230, 223, 211, 0.64), rgba(218, 208, 192, 0.62)),
-        #ded8cc;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.38);
+      overflow: visible;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
     }
 
     .portrait-arch::before {
@@ -242,14 +240,15 @@
       border-top: 1px solid rgba(177, 133, 84, 0.45);
       border-left: 1px solid rgba(177, 133, 84, 0.45);
       border-radius: 90px 0 0 0;
+      display: none;
     }
 
     .portrait-arch img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      filter: saturate(0.93) contrast(1.02);
+      object-fit: contain;
+      object-position: center bottom;
+      filter: saturate(0.93) contrast(1.02) drop-shadow(0 22px 34px rgba(76, 58, 39, 0.14));
       transform: none;
     }
 
@@ -553,6 +552,7 @@
       gap: 32px;
       padding: 22px;
       border-radius: 16px;
+      align-items: start;
     }
 
     .project-card + .project-card { margin-top: 18px; }
@@ -577,6 +577,7 @@
       display: grid;
       grid-template-rows: auto auto;
       gap: 12px;
+      align-self: center;
     }
 
     .carousel-frame {
@@ -584,6 +585,7 @@
       border: 1px solid rgba(164, 142, 108, 0.18);
       border-radius: 10px;
       background: #fff;
+      align-self: start;
     }
 
     .carousel-track {
@@ -839,7 +841,7 @@
       </div>
       <div class="portrait-wrap" aria-hidden="true">
         <div class="portrait-arch">
-          <img src="网页/profile.ecc5a00b.jpg" alt="" />
+          <img src="网页/profile-cutout.png" alt="" />
         </div>
         <svg class="leaf" viewBox="0 0 160 320" fill="none">
           <path d="M75 300C89 239 83 160 119 73" stroke="currentColor" stroke-width="2"/>
