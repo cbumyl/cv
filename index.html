@@ -1004,6 +1004,39 @@
         <div class="carousel" data-carousel>
           <div class="carousel-frame">
             <div class="carousel-track">
+              <figure class="carousel-slide"><img src="网页/byteview/dashboard/01_overview.png" alt="ByteView 经营总览看板" /><figcaption class="carousel-caption">01 经营总览：平台整体稳定，异常集中在泛知识垂类</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/byteview/dashboard/02_category_diagnosis.png" alt="ByteView 异常定位看板" /><figcaption class="carousel-caption">02 异常定位：泛知识 CTR、完播率与曝光份额阶段对比</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/byteview/dashboard/03_root_cause.png" alt="ByteView 根因归因看板" /><figcaption class="carousel-caption">03 根因归因：腰部创作者供给下降与推荐曝光迁移</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/byteview/dashboard/04_experiment.png" alt="ByteView AB 实验评估看板" /><figcaption class="carousel-caption">04 实验评估：供给侧激励有效，CTR 需单独优化</figcaption></figure>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" type="button" data-carousel-prev aria-label="上一张"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></button>
+            <span class="carousel-count" data-carousel-count>1 / 4</span>
+            <button class="carousel-btn" type="button" data-carousel-next aria-label="下一张"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m9 18 6-6-6-6"/></svg></button>
+          </div>
+        </div>
+        <div class="project-copy">
+          <h3>ByteView 内容平台创作者增长与推荐分发效率诊断项目</h3>
+          <div class="tags">
+            <span class="tag">内容平台</span><span class="tag">异动分析</span><span class="tag">DuckDB + SQL</span><span class="tag">推荐分发</span><span class="tag">AB 实验</span><span class="tag">Tableau 看板</span>
+          </div>
+          <p><strong>GitHub：</strong><a href="https://github.com/cbumyl/byteview-portfolio" target="_blank" rel="noreferrer">github.com/cbumyl/byteview-portfolio</a>｜2026.04 - 2026.05</p>
+          <p>围绕内容平台泛知识垂类推荐效率下滑，完成从数据建模、SQL 数据底座、指标体系、异常定位、创作者供给归因、推荐漏斗下钻到实验评估和看板交付的完整链路。</p>
+          <ul class="bullet-list">
+            <li><strong>数据建模与校验：</strong>基于公开资料与内容平台行业指标调研，使用内容平台公开业务数据表，自主构建用户、创作者、内容、审核、曝光、播放、互动、关注、负反馈、创作者激励及 AB 实验等 <strong>12 张原始业务表</strong>，覆盖 <strong>10 万用户、1 万创作者、11.2 万内容、208.97 万曝光事件、15.10 万播放事件及 730 名 AB 实验创作者</strong>，原始数据规模约 <strong>321 万行</strong>；输出 Markdown 校验报告，最终质量检查结果为 <strong>33 项 PASS、4 项 WARN、0 项 FAIL</strong>。</li>
+            <li><strong>数据清洗与链路搭建：</strong>使用 <strong>DuckDB + SQL</strong> 建立 raw、clean、mart 三层数据链路，构建 <strong>30 张数据库表</strong>、全库约 <strong>642 万行</strong>；在 clean 层保留并标记 <strong>2056 条孤儿曝光</strong>、识别 <strong>116 条异常播放</strong>、映射 <strong>7 条异常反馈类型</strong>；修正平台 DAU 跨垂类重复计数问题，将原 SUM 口径高估约 <strong>43.8%</strong> 的问题改为直接 COUNT DISTINCT 用户口径。</li>
+            <li><strong>指标体系与异常定位：</strong>搭建 CTR、3 秒留存率、完播率、互动率、负反馈率、曝光份额、投稿创作者占比、优质内容占比等 <strong>10+ 核心指标体系</strong>；通过垂类拆解定位异常集中在 <strong>泛知识垂类</strong>，其 CTR 从 <strong>0.0721 降至 0.0671</strong>（下降 <strong>0.49pp</strong>），完播率从 <strong>0.3308 降至 0.2204</strong>（下降 <strong>11.04pp</strong>），曝光份额从 <strong>24.9% 降至 20.3%</strong>（下降 <strong>4.6pp</strong>），而全平台 DAU 基本稳定。</li>
+            <li><strong>创作者供给归因与推荐漏斗下钻：</strong>围绕“腰部创作者供给下降 -> 内容池收缩 -> 曝光迁移 -> 消费效率下降”构建归因链路，发现泛知识腰部创作者日均投稿从 <strong>287.8 降至 154.7</strong>（下降 <strong>46.2%</strong>），投稿创作者占比从 <strong>44.88% 降至 30.95%</strong>（下降 <strong>13.93pp</strong>）；推荐页腰部曝光份额从 <strong>53.4% 降至 32.3%</strong>（下降 <strong>21.2pp</strong>），头部曝光份额从 <strong>37.3% 升至 55.7%</strong>（上升 <strong>18.4pp</strong>）。</li>
+            <li><strong>AB 实验与交付沉淀：</strong>设计并分析面向泛知识腰部创作者的 <strong>EXP_001 激励实验</strong>，样本为 Control 365 人与 Treatment 365 人；实验后 Treatment 组日均投稿率从 Control 的 <strong>0.3112 提升至 0.3633</strong>（提升 <strong>5.2pp</strong>），优质内容占比从 <strong>13.62% 提升至 18.18%</strong>（提升 <strong>4.6pp</strong>），完播率方向性提升 <strong>2.08pp</strong>，但 CTR 从 <strong>6.47% 降至 6.19%</strong>（下降 <strong>0.28pp</strong>），明确得出“供给侧激励有效，但点击效率需单独优化”的结论；最终输出 <strong>4 页 Tableau 风格看板、11 张聚合 CSV、指标口径字典、SQL 脚本及 GitHub 公开交付版</strong>。</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="carousel" data-carousel>
+          <div class="carousel-frame">
+            <div class="carousel-track">
               <figure class="carousel-slide"><img src="网页/quickmart/dashboard/01_overview.png" alt="QuickMart 增长总览看板" /><figcaption class="carousel-caption">01 增长总览：新用户、首单支付、D1 留存与核心漏斗</figcaption></figure>
               <figure class="carousel-slide"><img src="网页/quickmart/dashboard/02_channel.png" alt="QuickMart 渠道诊断看板" /><figcaption class="carousel-caption">02 渠道诊断：信息流渠道 A 是最大负贡献入口</figcaption></figure>
               <figure class="carousel-slide"><img src="网页/quickmart/dashboard/03_funnel.png" alt="QuickMart 漏斗诊断看板" /><figcaption class="carousel-caption">03 漏斗诊断：最大断点在结算到支付</figcaption></figure>
