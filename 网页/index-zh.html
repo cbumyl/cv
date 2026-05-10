@@ -377,14 +377,6 @@
       font-size: 15px;
       color: var(--text-muted);
     }
-    .project-link {
-      margin: 0 0 12px;
-      font-size: 14px;
-    }
-    .project-link a {
-      color: var(--brand);
-      font-weight: 600;
-    }
 
     .gallery {
       margin-top: 16px;
@@ -418,72 +410,6 @@
       font-size: 12px;
       color: var(--text-muted);
     }
-    .gallery-carousel {
-      position: relative;
-      display: block;
-    }
-    .gallery-carousel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 10px;
-      color: var(--text-muted);
-      font-size: 13px;
-    }
-    .gallery-controls {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .gallery-btn,
-    .gallery-edge {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--ink);
-      cursor: pointer;
-      box-shadow: var(--shadow-ring);
-    }
-    .gallery-btn {
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
-      font-size: 18px;
-      line-height: 1;
-    }
-    .gallery-page {
-      min-width: 42px;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 12px;
-    }
-    .gallery-slide {
-      display: none;
-    }
-    .gallery-slide.is-active {
-      display: block;
-    }
-    .gallery-carousel .gallery-item {
-      position: relative;
-    }
-    .gallery-carousel .gallery-item img {
-      aspect-ratio: 16 / 9;
-      object-fit: contain;
-      background: #f7fbff;
-    }
-    .gallery-edge {
-      position: absolute;
-      top: 50%;
-      z-index: 2;
-      width: 34px;
-      height: 42px;
-      border-radius: 12px;
-      transform: translateY(-50%);
-      font-size: 24px;
-      opacity: 0.92;
-    }
-    .gallery-edge-prev { left: 14px; }
-    .gallery-edge-next { right: 14px; }
 
     .skills-grid {
       display: grid;
@@ -801,62 +727,11 @@
       <div class="container section-frame">
         <div class="section-head">
           <h2>核心项目</h2>
-          <p>核心项目展示 ByteView 与 QuickMart 两个全链路数据分析作品，覆盖内容平台异动归因、即时零售增长诊断、SQL 数据链路、AB 实验和 Tableau 风格看板交付。</p>
+          <p>核心项目只保留 QuickMart 与 Apple Intelligence。QuickMart 是主项目，用最大篇幅展示 SQL、指标体系、漏斗诊断、原因验证、AB 实验和看板交付。</p>
         </div>
 
         <article class="project-card">
-          <div class="project-date">2026.04 - 2026.05 · 独立项目（核心项目 A）</div>
-          <div class="project-category">内容平台 / 异动分析 / 创作者生态 / 推荐分发 / AB 实验 / Dashboard</div>
-          <h3 class="project-title">ByteView 内容平台创作者增长与推荐分发效率诊断</h3>
-          <p class="project-description">围绕内容平台泛知识垂类推荐效率下滑，完成从数据建模、SQL 数据底座、指标体系、异常定位、创作者供给归因、推荐漏斗下钻到实验评估和看板交付的完整链路。</p>
-          <p class="project-link"><a href="https://github.com/cbumyl/byteview-portfolio" target="_blank" rel="noreferrer">GitHub：byteview-portfolio</a></p>
-          <ul>
-            <li><strong>数据建模与校验：</strong>基于公开资料与内容平台行业指标调研，使用内容平台公开业务数据表，自主构建用户、创作者、内容、审核、曝光、播放、互动、关注、负反馈、创作者激励及 AB 实验等 <strong>12 张原始业务表</strong>，覆盖 <strong>10 万用户、1 万创作者、11.2 万内容、208.97 万曝光事件、15.10 万播放事件及 730 名 AB 实验创作者</strong>，原始数据规模约 <strong>321 万行</strong>；通过固定随机种子保证数据可复现，设计并优化 Python 校验脚本，输出 Markdown 校验报告，完成主键、外键、日期范围、链路一致性、实验互斥等全量检查，最终质量检查结果为 <strong>33 项 PASS、4 项 WARN、0 项 FAIL</strong>。</li>
-            <li><strong>数据清洗与链路搭建：</strong>使用 <strong>DuckDB + SQL</strong> 建立 raw、clean、mart 三层数据链路，构建 <strong>30 张数据库表</strong>、全库约 <strong>642 万行</strong>；在 clean 层保留并标记 <strong>2056 条孤儿曝光</strong>、识别 <strong>116 条异常播放</strong>、映射 <strong>7 条异常反馈类型</strong>，保证脏数据可追溯且核心指标默认过滤；修正平台 DAU 跨垂类重复计数问题，将原 SUM 口径高估约 <strong>43.8%</strong> 的问题改为直接 COUNT DISTINCT 用户口径，并统一互动、播放、曝光等链路口径，导出 11 张聚合结果表支撑后续看板分析。</li>
-            <li><strong>指标体系与异常定位：</strong>搭建 CTR、3 秒留存率、完播率、互动率、负反馈率、曝光份额、投稿创作者占比、优质内容占比等 <strong>10+ 核心指标体系</strong>，按 Normal / Anomaly / Recovery 阶段进行异动对比，避免不等长窗口总量直接比较导致误判；通过垂类拆解定位异常集中在 <strong>泛知识垂类</strong>，其 CTR 从 <strong>0.0721 降至 0.0671</strong>（下降 <strong>0.49pp</strong>），完播率从 <strong>0.3308 降至 0.2204</strong>（下降 <strong>11.04pp</strong>），曝光份额从 <strong>24.9% 降至 20.3%</strong>（下降 <strong>4.6pp</strong>），而全平台 DAU 基本稳定，判断异常不是平台整体流量崩盘。</li>
-            <li><strong>创作者供给归因与推荐漏斗下钻：</strong>围绕“腰部创作者供给下降 -> 内容池收缩 -> 曝光迁移 -> 消费效率下降”构建归因链路，发现泛知识腰部创作者日均投稿从 <strong>287.8 降至 154.7</strong>（下降 <strong>46.2%</strong>），投稿创作者占比从 <strong>44.88% 降至 30.95%</strong>（下降 <strong>13.93pp</strong>），审核通过率下降 <strong>5.51pp</strong>；进一步拆解推荐页曝光结构，发现腰部曝光份额从 <strong>53.4% 降至 32.3%</strong>（下降 <strong>21.2pp</strong>），头部曝光份额从 <strong>37.3% 升至 55.7%</strong>（上升 <strong>18.4pp</strong>），说明推荐系统使用头部内容补位，CTR 被部分对冲但完播率显著下降，为内容质量与推荐匹配优化提供证据链。</li>
-            <li><strong>AB 实验与交付沉淀：</strong>设计并分析面向泛知识腰部创作者的 <strong>EXP_001 激励实验</strong>，样本为 Control 365 人与 Treatment 365 人，Treatment 策略包含稳定冷启动流量包、垂类创作任务和数据反馈提醒；采用日人均口径评估实验效果，实验后 Treatment 组日均投稿率从 Control 的 <strong>0.3112 提升至 0.3633</strong>（提升 <strong>5.2pp</strong>），优质内容占比从 <strong>13.62% 提升至 18.18%</strong>（提升 <strong>4.6pp</strong>），完播率方向性提升 <strong>2.08pp</strong>，但 CTR 从 <strong>6.47% 降至 6.19%</strong>（下降 <strong>0.28pp</strong>），明确得出“供给侧激励有效，但点击效率需单独优化”的结论；最终输出 <strong>4 页 Tableau 风格看板、11 张聚合 CSV、指标口径字典、SQL 脚本及 GitHub 公开交付版</strong>，完成内容平台异常诊断项目的全链路沉淀。</li>
-          </ul>
-          <div class="gallery gallery-carousel" data-gallery>
-            <div class="gallery-carousel-header">
-              <span>ByteView Tableau 风格看板预览</span>
-              <div class="gallery-controls">
-                <button class="gallery-btn" type="button" data-gallery-prev aria-label="上一页">‹</button>
-                <span class="gallery-page" data-gallery-page>1 / 4</span>
-                <button class="gallery-btn" type="button" data-gallery-next aria-label="下一页">›</button>
-              </div>
-            </div>
-            <button class="gallery-edge gallery-edge-prev" type="button" data-gallery-prev aria-label="上一页">‹</button>
-            <button class="gallery-edge gallery-edge-next" type="button" data-gallery-next aria-label="下一页">›</button>
-            <div class="gallery-slide is-active">
-              <div class="gallery-item">
-                <img src="byteview/dashboard/01_overview.png" alt="ByteView 经营总览看板" loading="lazy">
-                <span class="gallery-caption">01 经营总览：平台整体稳定，异常集中在泛知识垂类</span>
-              </div>
-            </div>
-            <div class="gallery-slide">
-              <div class="gallery-item">
-                <img src="byteview/dashboard/02_category_diagnosis.png" alt="ByteView 异常定位看板" loading="lazy">
-                <span class="gallery-caption">02 异常定位：泛知识 CTR、完播率与曝光份额阶段对比</span>
-              </div>
-            </div>
-            <div class="gallery-slide">
-              <div class="gallery-item">
-                <img src="byteview/dashboard/03_root_cause.png" alt="ByteView 根因归因看板" loading="lazy">
-                <span class="gallery-caption">03 根因归因：腰部创作者供给下降与推荐曝光迁移</span>
-              </div>
-            </div>
-            <div class="gallery-slide">
-              <div class="gallery-item">
-                <img src="byteview/dashboard/04_experiment.png" alt="ByteView AB 实验评估看板" loading="lazy">
-                <span class="gallery-caption">04 实验评估：供给侧激励有效，CTR 需单独优化</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-date">2026.02 - 2026.03 · 独立项目（核心项目 B）</div>
+          <div class="project-date">2026.03 - 2026.05 · 独立项目（核心项目 A）</div>
           <div class="project-category">数据分析 / 增长诊断 / SQL / AB 实验 / Dashboard</div>
           <h3 class="project-title">QuickMart 即时零售新用户首单转化与留存诊断</h3>
           <p class="project-description">围绕即时零售平台 3 月新用户增长质量波动，搭建从数据清洗、指标计算、异常诊断、原因下钻、AB 实验到看板汇报的完整分析链路。</p>
@@ -939,7 +814,7 @@
         </article>
 
         <article class="project-card">
-          <div class="project-date">2025.10 - 2025.12 · 课程项目（核心项目 C）</div>
+          <div class="project-date">2025.10 - 2025.12 · 课程项目（核心项目 B）</div>
           <div class="project-category">行业研究 / 增长测算 / 商业分析</div>
           <h3 class="project-title">Apple Intelligence 增长策略与发布路径设计</h3>
           <p class="project-description">围绕 AI 手机竞争格局变化，完成资料交叉验证、趋势拆解、战略建议与商业测算，输出英文报告与商赛级 PPT。</p>
@@ -1099,33 +974,6 @@
 
     window.addEventListener("scroll", updateActiveNav);
     window.addEventListener("load", updateActiveNav);
-
-    document.querySelectorAll("[data-gallery]").forEach((gallery) => {
-      const slides = Array.from(gallery.querySelectorAll(".gallery-slide"));
-      const page = gallery.querySelector("[data-gallery-page]");
-      const prevButtons = Array.from(gallery.querySelectorAll("[data-gallery-prev]"));
-      const nextButtons = Array.from(gallery.querySelectorAll("[data-gallery-next]"));
-      let index = 0;
-
-      function showSlide(nextIndex) {
-        if (!slides.length) return;
-        index = (nextIndex + slides.length) % slides.length;
-        slides.forEach((slide, slideIndex) => {
-          slide.classList.toggle("is-active", slideIndex === index);
-        });
-        if (page) {
-          page.textContent = `${index + 1} / ${slides.length}`;
-        }
-      }
-
-      prevButtons.forEach((button) => {
-        button.addEventListener("click", () => showSlide(index - 1));
-      });
-      nextButtons.forEach((button) => {
-        button.addEventListener("click", () => showSlide(index + 1));
-      });
-      showSlide(0);
-    });
   </script>
 </body>
 </html>
