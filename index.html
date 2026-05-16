@@ -433,6 +433,20 @@
       padding: 22px 26px;
     }
 
+    .edu-card .entry-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: flex-start;
+    }
+
+    .edu-card .entry-head {
+      min-width: 0;
+    }
+
+    .edu-card .org {
+      white-space: nowrap;
+    }
+
     .entry-top {
       display: flex;
       justify-content: space-between;
@@ -807,6 +821,8 @@
       .metrics, .proof-grid, .value-cards { grid-template-columns: 1fr; }
       .metric + .metric::before { display: none; }
       .entry-top, .footer-inner { flex-direction: column; align-items: flex-start; }
+      .edu-card .entry-top { display: flex; }
+      .edu-card .org { white-space: normal; }
       .project-card { padding: 14px; }
       .project-image img,
       .carousel-slide img { min-height: 210px; }
