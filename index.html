@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="李泽涛 - 运营增长与数据驱动业务诊断个人简历网页" />
+  <title>李泽涛 | 运营增长简历网页</title>
+  <style>
+    :root {
+      --paper: #f7f2e9;
+      --paper-2: #fbf8f1;
+      --card: rgba(255, 253, 248, 0.88);
+      --ink: #22211d;
+      --text: #5f5b53;
+      --muted: #8a857a;
+      --line: rgba(163, 143, 116, 0.24);
+      --line-strong: rgba(121, 100, 75, 0.28);
+      --accent: #c55f3b;
+      --accent-dark: #a94e31;
+      --dark: #282522;
+      --dark-2: #35312c;
+      --shadow: 0 18px 44px rgba(79, 57, 35, 0.10);
+      --shadow-soft: 0 10px 28px rgba(79, 57, 35, 0.08);
+      --container: 1216px;
+      --serif: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", Georgia, serif;
+      --sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 13% 31%, rgba(255, 255, 255, 0.88) 0 17%, transparent 34%),
+        radial-gradient(circle at 78% 7%, rgba(228, 214, 192, 0.36) 0 16%, transparent 34%),
+        linear-gradient(180deg, #f8f3ea 0%, #fbf8f2 39%, #f6efe5 100%);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto auto 0 0;
+      z-index: -1;
+      width: min(70vw, 940px);
+      height: 650px;
+      background:
+        linear-gradient(165deg, transparent 0 41%, rgba(188, 151, 104, 0.20) 42% 43%, transparent 44%),
+        radial-gradient(ellipse at 28% 77%, rgba(186, 149, 104, 0.25) 0 9%, transparent 42%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    body::after {
+      inset: auto 0 16% auto;
+      transform: scaleX(-1);
+      opacity: 0.38;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .container {
+      width: min(var(--container), calc(100vw - 92px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      height: 68px;
+      border-bottom: 1px solid rgba(75, 62, 48, 0.12);
+      background: rgba(249, 245, 237, 0.78);
+      backdrop-filter: blur(18px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-family: var(--serif);
+      font-size: 22px;
+      letter-spacing: 0;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      font-size: 13px;
+      color: #514d46;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 24px 0 20px;
+    }
+
+    .nav-links a:first-child::after,
+    .nav-links a:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 12px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 590px;
+      border-bottom: 1px solid rgba(162, 142, 111, 0.12);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 63% 71%, rgba(211, 199, 180, 0.42) 0 22%, transparent 46%),
+        linear-gradient(145deg, transparent 0 53%, rgba(228, 215, 194, 0.42) 54% 100%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(420px, 0.98fr);
+      min-height: 590px;
+      align-items: center;
+      gap: 56px;
+      padding: 54px 0 78px;
+    }
+
+    .kicker {
+      margin: 0 0 22px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.58em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, .metric-number {
+      font-family: var(--serif);
+      color: var(--ink);
+      font-weight: 500;
+      letter-spacing: 0;
+      margin: 0;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      line-height: 1.09;
+      max-width: 610px;
+    }
+
+    .hero-lead {
+      max-width: 650px;
+      margin: 26px 0 0;
+      color: #5b5851;
+      font-size: 17px;
+      line-height: 1.86;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      height: 48px;
+      padding: 0 23px;
+      border: 1px solid rgba(125, 106, 83, 0.25);
+      border-radius: 5px;
+      background: rgba(255, 253, 248, 0.82);
+      color: #4e4a43;
+      font-size: 14px;
+      box-shadow: 0 8px 18px rgba(93, 69, 47, 0.05);
+    }
+
+    .btn-primary {
+      color: #fff8ef;
+      border-color: var(--accent);
+      background: linear-gradient(180deg, #cf6b45, #b95636);
+      box-shadow: 0 12px 26px rgba(177, 81, 49, 0.22);
+    }
+
+    .btn svg {
+      width: 17px;
+      height: 17px;
+      stroke-width: 1.8;
+    }
+
+    .portrait-wrap {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      border-left: 1px solid rgba(173, 145, 107, 0.35);
+    }
+
+    .portrait-arch {
+      position: relative;
+      width: min(490px, 88%);
+      height: 526px;
+      overflow: visible;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .portrait-arch::before {
+      content: "";
+      position: absolute;
+      inset: -28px auto auto -28px;
+      width: 136px;
+      height: 136px;
+      border-top: 1px solid rgba(177, 133, 84, 0.45);
+      border-left: 1px solid rgba(177, 133, 84, 0.45);
+      border-radius: 90px 0 0 0;
+      display: none;
+    }
+
+    .portrait-arch img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      filter: saturate(0.93) contrast(1.02) drop-shadow(0 22px 34px rgba(76, 58, 39, 0.14));
+      transform: none;
+    }
+
+    .leaf {
+      position: absolute;
+      right: -26px;
+      top: 78px;
+      width: 158px;
+      height: 320px;
+      opacity: 0.36;
+      color: #7a7569;
+    }
+
+    .metrics {
+      position: relative;
+      z-index: 3;
+      margin: -51px auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      min-height: 116px;
+      border: 1px solid rgba(164, 141, 108, 0.20);
+      border-radius: 18px;
+      background: rgba(255, 253, 247, 0.88);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .metric {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 18px 20px;
+    }
+
+    .metric + .metric::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 27px;
+      bottom: 27px;
+      width: 1px;
+      background: rgba(164, 141, 108, 0.24);
+    }
+
+    .metric-number {
+      font-size: 29px;
+      line-height: 1.1;
+    }
+
+    .metric-label {
+      max-width: 17em;
+      margin: 10px auto 0;
+      color: #656057;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    main { padding: 34px 0 0; }
+    section { scroll-margin-top: 92px; }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 0 0 16px;
+    }
+
+    .section-title h2 {
+      font-size: 28px;
+      line-height: 1.25;
+    }
+
+    .section-title span {
+      color: #7e7569;
+      font-family: Georgia, serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .about {
+      position: relative;
+      display: grid;
+      grid-template-columns: 390px minmax(0, 1fr);
+      gap: 48px;
+      padding: 14px 0 34px;
+    }
+
+    .about::before {
+      content: "";
+      position: absolute;
+      left: -150px;
+      bottom: 18px;
+      width: 420px;
+      height: 96px;
+      background: linear-gradient(165deg, transparent 32%, rgba(176, 133, 80, 0.28) 36%, transparent 64%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .about h2 {
+      max-width: 330px;
+      font-size: 36px;
+      line-height: 1.24;
+    }
+
+    .about-text {
+      border-left: 1px solid rgba(162, 139, 107, 0.22);
+      padding: 20px 0 0 36px;
+    }
+
+    .about-text > p {
+      max-width: 710px;
+      margin: 0 0 28px;
+      color: #656057;
+      font-size: 16px;
+    }
+
+    .value-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .mini-card,
+    .edu-card,
+    .experience-card,
+    .project-card {
+      border: 1px solid rgba(158, 137, 107, 0.20);
+      border-radius: 13px;
+      background: var(--card);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(14px);
+    }
+
+    .mini-card {
+      min-height: 138px;
+      padding: 20px;
+    }
+
+    .mini-icon {
+      display: grid;
+      place-items: center;
+      width: 29px;
+      height: 29px;
+      margin-bottom: 12px;
+      color: var(--accent);
+      border: 1px solid rgba(197, 95, 59, 0.36);
+      border-radius: 6px;
+    }
+
+    .mini-card h3 {
+      margin-bottom: 7px;
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 700;
+      color: #423d35;
+    }
+
+    .mini-card p {
+      margin: 0;
+      color: #777166;
+      font-size: 12px;
+      line-height: 1.62;
+    }
+
+    .education {
+      padding: 22px 0 30px;
+    }
+
+    .edu-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .edu-card {
+      padding: 22px 26px;
+    }
+
+    .edu-card .entry-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: flex-start;
+    }
+
+    .edu-card .entry-head {
+      min-width: 0;
+    }
+
+    .edu-card .org {
+      white-space: nowrap;
+    }
+
+    .entry-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 15px;
+    }
+
+    .entry-head {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid rgba(155, 134, 103, 0.18);
+      padding: 5px;
+    }
+
+    .org {
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 21px;
+      line-height: 1.2;
+    }
+
+    .role {
+      margin-top: 2px;
+      color: #6f685d;
+      font-size: 13px;
+    }
+
+    .date {
+      white-space: nowrap;
+      color: #6f685d;
+      font-size: 12px;
+    }
+
+    .bullet-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #5f5a50;
+      font-size: 14px;
+    }
+
+    .bullet-list li::marker { color: var(--accent); }
+    .bullet-list li + li { margin-top: 9px; }
+    strong { color: #3e3932; }
+
+    .experience {
+      padding: 6px 0 30px;
+    }
+
+    .experience-card {
+      padding: 24px 28px 26px;
+      border-radius: 16px;
+    }
+
+    .experience-card + .experience-card { margin-top: 18px; }
+
+    .pill-date {
+      display: inline-flex;
+      align-items: center;
+      height: 32px;
+      padding: 0 18px;
+      border: 1px solid rgba(160, 138, 103, 0.36);
+      border-radius: 999px;
+      background: rgba(255, 252, 246, 0.76);
+      color: #70675a;
+      font-size: 12px;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 13px;
+      margin-top: 24px;
+    }
+
+    .proof {
+      overflow: hidden;
+      border: 1px solid rgba(164, 142, 108, 0.22);
+      border-radius: 8px;
+      background: #fffdf8;
+      text-align: center;
+    }
+
+    .proof img {
+      width: 100%;
+      height: 142px;
+      object-fit: cover;
+      object-position: top center;
+      border-bottom: 1px solid rgba(164, 142, 108, 0.16);
+    }
+
+    .proof span {
+      display: block;
+      padding: 8px 8px 9px;
+      color: #756c60;
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    .projects {
+      padding: 2px 0 28px;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(460px, 1fr);
+      gap: 32px;
+      padding: 22px;
+      border-radius: 16px;
+      align-items: start;
+    }
+
+    .project-card + .project-card { margin-top: 18px; }
+
+    .project-image {
+      overflow: hidden;
+      align-self: stretch;
+      border: 1px solid rgba(164, 142, 108, 0.18);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 292px;
+      object-fit: cover;
+      object-position: top left;
+    }
+
+    .carousel {
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 12px;
+      align-self: center;
+    }
+
+    .carousel-frame {
+      overflow: hidden;
+      border: 1px solid rgba(164, 142, 108, 0.18);
+      border-radius: 10px;
+      background: #fff;
+      align-self: start;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 260ms ease;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      min-width: 100%;
+      margin: 0;
+      background: #fff;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 340px;
+      object-fit: contain;
+      object-position: center center;
+      background: #fff;
+    }
+
+    .carousel-caption {
+      display: block;
+      padding: 9px 12px 11px;
+      color: #756c60;
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 1.35;
+      border-top: 1px solid rgba(164, 142, 108, 0.16);
+      background: #fffdf8;
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .carousel-btn {
+      display: inline-grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(164, 142, 108, 0.30);
+      border-radius: 999px;
+      background: rgba(255, 253, 248, 0.86);
+      color: #5b5146;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(93, 69, 47, 0.07);
+    }
+
+    .carousel-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 1.8;
+    }
+
+    .carousel-count {
+      color: #786f63;
+      font-size: 13px;
+    }
+
+    .project-copy h3 {
+      margin: 0 0 7px;
+      font-size: 29px;
+      line-height: 1.22;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      height: 24px;
+      padding: 0 9px;
+      border-radius: 999px;
+      background: #f1eadf;
+      color: #796f61;
+      font-size: 11px;
+      line-height: 24px;
+    }
+
+    .project-copy p {
+      margin: 0 0 10px;
+      color: #625c52;
+      font-size: 14px;
+    }
+    .project-copy a {
+      color: var(--accent-dark);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .project-copy .bullet-list {
+      font-size: 13px;
+      line-height: 1.66;
+    }
+
+    .skills {
+      padding: 0 0 20px;
+    }
+
+    .skills-panel {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at 100% 100%, rgba(184, 155, 112, 0.22), transparent 23%),
+        linear-gradient(135deg, var(--dark), var(--dark-2));
+      box-shadow: 0 18px 42px rgba(36, 31, 26, 0.22);
+    }
+
+    .skill-col {
+      min-height: 192px;
+      padding: 24px 24px 28px;
+      border-right: 1px solid rgba(233, 222, 207, 0.24);
+    }
+
+    .skill-col:last-child { border-right: 0; }
+
+    .skill-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 16px;
+      color: #f0e5d5;
+      font-family: var(--serif);
+      font-size: 16px;
+    }
+
+    .skill-title svg {
+      width: 19px;
+      height: 19px;
+      color: #c7a372;
+      stroke-width: 1.7;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .skill-tags span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 27px;
+      padding: 4px 10px;
+      border: 1px solid rgba(231, 222, 209, 0.22);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.13);
+      color: #e4dcd0;
+      font-size: 12px;
+      line-height: 1.2;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(105, 91, 74, 0.12);
+      padding: 24px 0 26px;
+      color: #948b80;
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .footer-icons {
+      display: flex;
+      gap: 18px;
+      color: #8f877d;
+    }
+
+    .footer-icons svg {
+      width: 21px;
+      height: 21px;
+      stroke-width: 1.6;
+    }
+
+    @page {
+      size: A4;
+      margin: 10mm;
+    }
+
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      html,
+      body {
+        width: auto;
+        min-width: 0;
+        color: #222;
+        background: #fff !important;
+        font-size: 10pt;
+        line-height: 1.45;
+      }
+
+      body::before,
+      body::after,
+      .hero::before,
+      .about::before,
+      .topbar,
+      .actions,
+      .portrait-wrap,
+      .leaf,
+      .carousel-controls,
+      .footer {
+        display: none !important;
+      }
+
+      a {
+        color: #111;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .container {
+        width: 100% !important;
+        margin: 0 !important;
+      }
+
+      main {
+        padding: 0;
+      }
+
+      section {
+        scroll-margin-top: 0;
+        padding: 0 0 7mm !important;
+        break-inside: auto;
+      }
+
+      .hero {
+        min-height: 0;
+        overflow: visible;
+        border-bottom: 1px solid #d8d0c5;
+      }
+
+      .hero-grid {
+        display: block;
+        min-height: 0;
+        padding: 0 0 6mm;
+      }
+
+      .kicker {
+        margin-bottom: 3mm;
+        color: #8b4a32;
+        font-size: 8pt;
+        letter-spacing: 0.28em;
+      }
+
+      .hero h1 {
+        max-width: none;
+        font-size: 25pt;
+        line-height: 1.12;
+      }
+
+      .hero-lead {
+        max-width: none;
+        margin-top: 4mm;
+        color: #333;
+        font-size: 10pt;
+        line-height: 1.55;
+      }
+
+      .metrics {
+        margin: 5mm 0 0;
+        min-height: 0;
+        grid-template-columns: repeat(4, 1fr);
+        border: 1px solid #ded7cd;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: none;
+      }
+
+      .metric {
+        padding: 3mm 2mm;
+      }
+
+      .metric-number {
+        font-size: 15pt;
+      }
+
+      .metric-label {
+        margin-top: 1.5mm;
+        color: #444;
+        font-size: 7.5pt;
+        line-height: 1.35;
+      }
+
+      .section-title {
+        margin-bottom: 3mm;
+        border-bottom: 1px solid #d8d0c5;
+        padding-bottom: 1.5mm;
+      }
+
+      .section-title h2 {
+        font-size: 18pt;
+      }
+
+      .section-title span {
+        color: #777;
+        font-size: 7pt;
+        letter-spacing: 0.18em;
+      }
+
+      .about,
+      .edu-grid,
+      .project-card,
+      .skills-panel {
+        display: block;
+      }
+
+      .about-text {
+        border-left: 0;
+        padding: 0;
+      }
+
+      .about h2 {
+        max-width: none;
+        margin-bottom: 3mm;
+        font-size: 18pt;
+      }
+
+      .about-text > p,
+      .project-copy p {
+        color: #333;
+        font-size: 9pt;
+        line-height: 1.5;
+      }
+
+      .value-cards,
+      .edu-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3mm;
+      }
+
+      .mini-card,
+      .edu-card,
+      .experience-card,
+      .project-card,
+      .skill-col {
+        border: 1px solid #ddd4c8;
+        border-radius: 6px;
+        background: #fff !important;
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      .mini-card,
+      .edu-card,
+      .experience-card {
+        padding: 4mm;
+      }
+
+      .mini-icon {
+        display: none;
+      }
+
+      .mini-card {
+        min-height: 0;
+      }
+
+      .mini-card h3,
+      .category-title,
+      .project-copy h3 {
+        font-size: 13pt;
+      }
+
+      .mini-card p {
+        color: #444;
+        font-size: 8pt;
+      }
+
+      .entry-top {
+        margin-bottom: 3mm;
+      }
+
+      .entry-head {
+        gap: 3mm;
+      }
+
+      .logo {
+        width: 10mm;
+        height: 10mm;
+        border-radius: 4px;
+        padding: 1mm;
+      }
+
+      .org {
+        font-size: 12pt;
+      }
+
+      .role,
+      .date,
+      .pill-date {
+        color: #444;
+        font-size: 8pt;
+      }
+
+      .bullet-list {
+        color: #222;
+        font-size: 8.5pt;
+        line-height: 1.45;
+      }
+
+      .bullet-list li + li {
+        margin-top: 1.8mm;
+      }
+
+      .project-card {
+        padding: 4mm;
+        margin-top: 4mm !important;
+      }
+
+      .project-card,
+      .project-card * {
+        break-inside: auto;
+      }
+
+      .carousel {
+        display: block;
+        margin-bottom: 4mm;
+      }
+
+      .carousel-frame {
+        overflow: visible;
+        border: 0;
+        background: transparent;
+      }
+
+      .carousel-track {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3mm;
+        transform: none !important;
+        transition: none;
+      }
+
+      .carousel-slide {
+        min-width: 0;
+        margin: 0;
+        border: 1px solid #ddd4c8;
+        border-radius: 4px;
+        background: #fff;
+        break-inside: avoid;
+      }
+
+      .carousel-slide img {
+        width: 100%;
+        height: auto;
+        max-height: 83mm;
+        object-fit: contain;
+        background: #fff;
+      }
+
+      .carousel-caption {
+        padding: 1.5mm 2mm;
+        color: #333;
+        font-size: 7.2pt;
+        line-height: 1.25;
+        background: #fff;
+      }
+
+      .tags {
+        gap: 1.5mm;
+        margin-bottom: 2mm;
+      }
+
+      .tag,
+      .skill-tags span {
+        min-height: 0;
+        height: auto;
+        padding: 1mm 2mm;
+        border: 1px solid #ded7cd;
+        border-radius: 4px;
+        background: #fff;
+        color: #333;
+        font-size: 7.5pt;
+        line-height: 1.2;
+      }
+
+      .skills-panel {
+        border-radius: 6px;
+        background: #fff;
+      }
+
+      .skill-col {
+        padding: 4mm;
+        border-right: 0;
+        margin-bottom: 3mm;
+      }
+
+      .skill-title {
+        color: #222;
+        font-size: 12pt;
+      }
+
+      .skill-title svg {
+        display: none;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .container { width: min(var(--container), calc(100vw - 34px)); }
+      .hero-grid,
+      .about,
+      .edu-grid,
+      .project-card,
+      .skills-panel {
+        grid-template-columns: 1fr;
+      }
+      .hero-grid { gap: 24px; padding-top: 36px; }
+      .portrait-wrap { min-height: 450px; border-left: 0; }
+      .portrait-arch { height: 440px; }
+      .metrics, .proof-grid, .value-cards { grid-template-columns: repeat(2, 1fr); }
+      .edu-grid { gap: 18px; }
+      .about-text { border-left: 0; padding-left: 0; }
+      .skill-col { border-right: 0; border-bottom: 1px solid rgba(233, 222, 207, 0.18); }
+      .skill-col:last-child { border-bottom: 0; }
+    }
+
+    @media (max-width: 680px) {
+      .topbar { height: auto; }
+      .nav { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 0; }
+      .nav-links { width: 100%; gap: 16px; overflow-x: auto; }
+      .nav-links a { padding: 4px 0 8px; }
+      .hero h1 { font-size: 42px; }
+      .hero-lead { font-size: 15px; }
+      .kicker { letter-spacing: 0.34em; }
+      .metrics, .proof-grid, .value-cards { grid-template-columns: 1fr; }
+      .metric + .metric::before { display: none; }
+      .entry-top, .footer-inner { flex-direction: column; align-items: flex-start; }
+      .edu-card .entry-top { display: flex; }
+      .edu-card .org { white-space: normal; }
+      .project-card { padding: 14px; }
+      .project-image img,
+      .carousel-slide img { min-height: 210px; }
+      .carousel-slide img { height: 230px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="container nav" aria-label="主导航">
+      <a class="brand" href="#top">李泽涛</a>
+      <div class="nav-links">
+        <a href="#about">关于</a>
+        <a href="#education">教育</a>
+        <a href="#experience">实习</a>
+        <a href="#projects">项目</a>
+        <a href="#skills">能力</a>
+        <a href="mailto:yeurekal@gmail.com">联系</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div>
+        <p class="kicker">Growth Operations Portfolio</p>
+        <h1>用数据发现问题<br />用策略推动增长<br />用实验验证方向</h1>
+        <p class="hero-lead">金融科技背景，具备 AI + 数据驱动的增长运营、产品运营与内容运营能力。独立运营 AI 知识类账号，小红书冷启动 6 条作品获得 500+ 粉丝、5000+ 点赞收藏，抖音单条 AI Agent 教学视频获得 7 万+播放、2100+点赞、2700+收藏；熟悉用户人群锚定、内容策划、爆款钩子设计、数据复盘和增长策略迭代。具备 SQL、Python、Excel、Tableau 等数据分析能力，并能使用 Claude Code、Codex 等 AI Agent 工具搭建内容生产、数据分析和产品迭代工作流；英文资料阅读能力较强，可持续跟踪海外 AI 社区、GitHub、X、YouTube 等前沿信息，并快速转化为内容选题、产品洞察和运营策略。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">查看核心项目
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+          <a class="btn" href="mailto:yeurekal@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            发送邮件
+          </a>
+        </div>
+      </div>
+      <div class="portrait-wrap" aria-hidden="true">
+        <div class="portrait-arch">
+          <img src="网页/profile-cutout.png" alt="" />
+        </div>
+        <svg class="leaf" viewBox="0 0 160 320" fill="none">
+          <path d="M75 300C89 239 83 160 119 73" stroke="currentColor" stroke-width="2"/>
+          <path d="M118 72c-30 6-46 29-43 55 27-5 45-27 43-55Z" fill="currentColor" opacity=".58"/>
+          <path d="M93 146c-29-3-52 11-62 38 30 4 52-11 62-38Z" fill="currentColor" opacity=".48"/>
+          <path d="M99 184c-24 4-40 22-40 47 25-4 41-22 40-47Z" fill="currentColor" opacity=".43"/>
+          <path d="M110 112c23-4 38-22 38-45-23 4-39 22-38 45Z" fill="currentColor" opacity=".38"/>
+          <path d="M73 222c-25-11-52-4-68 18 25 12 52 4 68-18Z" fill="currentColor" opacity=".36"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="container metrics" aria-label="关键指标">
+    <div class="metric">
+      <div class="metric-number">数据驱动运营</div>
+      <div class="metric-label">熟练使用 Excel、SQL、Tableau 搭建指标体系与监控看板，从数据异动发现问题、归因定位到输出可落地策略建议</div>
+    </div>
+    <div class="metric">
+      <div class="metric-number">策略设计与验证</div>
+      <div class="metric-label">有 AB 实验从方案设计到结果评估的完整实践，能将业务问题转化为可测量的实验假设并形成复盘闭环</div>
+    </div>
+    <div class="metric">
+      <div class="metric-number">结构化交付</div>
+      <div class="metric-label">具备"结论 - 证据 - 动作"汇报框架意识，能将复杂分析结果转化为跨部门可理解、可执行的沟通材料</div>
+    </div>
+    <div class="metric">
+      <div class="metric-number">AI 工具应用</div>
+      <div class="metric-label">熟练运用 GPT、Claude、Gemini 等主流 AI 工具及 Agent 提升工作效率，具备提示词调试与流程自动化实践经验</div>
+    </div>
+  </div>
+
+  <main>
+    <section class="container about" id="about">
+      <div>
+        <div class="section-title"><h2>关于我</h2><span>Positioning</span></div>
+        <h2>数据驱动的<br />运营候选人</h2>
+      </div>
+      <div class="about-text">
+        <p>我关注从"业务问题定义"到"策略设计落地"再到"实验验证复盘"的完整运营链路。相比堆砌工具标签，我更重视把模糊的增长问题拆解成可监控指标、可验证实验方案和可执行的策略建议。</p>
+        <div class="value-cards">
+          <article class="mini-card">
+            <div class="mini-icon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor"><path d="M4 5h16v14H4z"/><path d="M7 9h10M7 13h5"/></svg></div>
+            <h3>业务问题拆解</h3>
+            <p>从用户、内容、渠道与运营动作视角拆解问题，沉淀"结论 - 证据 - 动作"分析框架。</p>
+          </article>
+          <article class="mini-card">
+            <div class="mini-icon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v9l7-4"/></svg></div>
+            <h3>策略设计验证</h3>
+            <p>把增长问题转化为策略假设，通过 AB 实验和分层对比验证方向是否有效。</p>
+          </article>
+          <article class="mini-card">
+            <div class="mini-icon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5M12 16V8M16 16v-8"/></svg></div>
+            <h3>运营复盘交付</h3>
+            <p>用 Tableau 看板、结构化 PPT 和分析报告，把结论转成跨部门可执行语言。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="container education" id="education">
+      <div class="section-title"><h2>教育背景</h2><span>Education</span></div>
+      <div class="edu-grid">
+        <article class="edu-card">
+          <div class="entry-top">
+            <div class="entry-head">
+              <img class="logo" src="网页/szu-logo.webp" alt="深圳大学" />
+              <div>
+                <div class="org">深圳大学 - 法国南特高等商学院</div>
+                <div class="role">金融科技（中外合办）· 双学士学位</div>
+              </div>
+            </div>
+            <div class="date">2022.09 - 至今</div>
+          </div>
+          <ul class="bullet-list">
+            <li><strong>核心课程：</strong>机器学习、数据库系统、金融计量学、数据结构、公司金融、商务智能分析、计量经济学、金融衍生品。</li>
+          </ul>
+        </article>
+        <article class="edu-card">
+          <div class="entry-top">
+            <div class="entry-head">
+              <img class="logo" src="网页/audencia-logo.webp" alt="法国南特高等商学院硕士" />
+              <div>
+                <div class="org">法国南特高等商学院</div>
+                <div class="role">金融科技与风险控制 · 理学硕士</div>
+              </div>
+            </div>
+            <div class="date">2026.09 - 2028.06（Offer 已获）</div>
+          </div>
+          <ul class="bullet-list">
+            <li><strong>方向衔接：</strong>继续强化金融科技、风险控制、数据建模与商业分析能力。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="container experience" id="experience">
+      <div class="section-title"><h2>实习经历</h2><span>Internship</span></div>
+      <article class="experience-card">
+        <div class="entry-top">
+          <div class="entry-head">
+            <img class="logo" src="网页/citic-logo.webp" alt="中信证券" />
+            <div>
+              <div class="org">中信证券</div>
+              <div class="role">市场部实习生</div>
+            </div>
+          </div>
+          <div class="pill-date">2025.7 - 2025.9</div>
+        </div>
+        <ul class="bullet-list">
+          <li><strong>客户分层需求洞察：</strong>针对私募产品客户沟通中卖点分散、理解成本高的业务痛点，结合业务端反馈、产品资料与公开市场数据，拆解收益弹性、回撤控制、流动性需求、配置周期 4 类客户核心诉求，搭建「客户需求 - 产品特征 - 沟通卖点」匹配表，支撑团队优化客户触达材料与产品推荐逻辑。</li>
+          <li><strong>竞品分析卖点提炼：</strong>为补齐市场端竞品信息维度、支撑客户沟通材料迭代，通过八爪鱼采集公开渠道资料，整合 50+ 竞品报告与 30+ 管理人业绩数据，从产品定位、收益风险、费率结构、渠道打法、客户痛点 5 个维度搭建对比框架，提炼 8-10 条差异化卖点与风险提示，成果应用于团队周度复盘、客户沟通及外部材料更新。</li>
+          <li><strong>市场监控运营复盘：</strong>为动态跟进市场行情与产品表现，依托 Wind、公开渠道数据，通过 Excel 搭建产品表现跟踪台账，按周监测市场变化、产品净值表现与客户关注点迁移；累计输出 8 份周度观察表与 2 份专题分析材料，通过历史基线对比识别阶段性机会点，输出产品沟通优先级与材料更新建议。</li>
+          <li><strong>AI 提效流程沉淀：</strong>针对市场材料产出中重复工作占比高、效率偏低的问题，运用 GPT、Claude、Cursor 等工具完成资料摘要、字段清洗、图表生成与 PPT 初稿制作，沉淀 2 套可复用分析模板与周报标准化 SOP，将单次资料初筛与表格整理时长从 3 小时压缩至 1.5 小时，产出效率提升 50%。</li>
+        </ul>
+      </article>
+
+      <article class="experience-card">
+        <div class="entry-top">
+          <div class="entry-head">
+            <img class="logo" src="网页/sdic-logo.webp" alt="国投证券" />
+            <div>
+              <div class="org">国投证券</div>
+              <div class="role">私募业务部实习生</div>
+            </div>
+          </div>
+          <div class="pill-date">2025.1 - 2025.3</div>
+        </div>
+        <ul class="bullet-list">
+          <li><strong>合作产品池搭建：</strong>针对合作基金产品信息分散、业务团队难以快速判定推荐优先级的痛点，整合自有合作产品与外部竞品全量信息，覆盖收益表现、最大回撤、波动率、申赎规则、费率结构、管理人背景 6 类核心字段，搭建「合作产品 - 竞品产品 - 适配客户场景」三维对比表，提升产品信息调取与内部协同效率。</li>
+          <li><strong>竞品对标卖点提炼：</strong>为明确自有产品差异化定位、支撑销售精准推荐，从收益风险、策略类型、管理人能力、客户适配度 4 个维度，对标外部同类产品完成 20+ 样本深度对比，提炼各产品推荐理由、风险提示与适配场景，辅助团队锁定重点推荐产品与潜在合作机会。</li>
+          <li><strong>客户需求匹配挖掘：</strong>围绕高净值客户稳健配置、收益增强、流动性管理、长期配置 4 类差异化需求，搭建「客户需求 - 产品类型 - 推荐理由」匹配框架，协助业务团队梳理潜在客户机会，将专业基金指标转化为通俗沟通话术，降低客户理解门槛。</li>
+          <li><strong>渠道支持流程沉淀：</strong>配合团队输出合作产品介绍、竞品对比表、沟通摘要等业务与会议材料，累计产出 2 份专题分析报告与多份产品对比台账；对接产品、销售及中后台团队统一数据口径，运用 GPT 辅助资料摘要与表格整理，沉淀合作产品分析模板，提升渠道合作支持效率。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="container projects" id="projects">
+      <div class="section-title"><h2>核心项目</h2><span>Projects</span></div>
+      <article class="project-card">
+        <div class="carousel" data-carousel>
+          <div class="carousel-frame">
+            <div class="carousel-track">
+              <figure class="carousel-slide"><img src="网页/byteview/dashboard/01_overview.png" alt="ByteView 经营总览看板" /><figcaption class="carousel-caption">01 经营总览：平台整体稳定，异常集中在泛知识垂类</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/byteview/dashboard/02_category_diagnosis.png" alt="ByteView 异常定位看板" /><figcaption class="carousel-caption">02 异常定位：泛知识 CTR、完播率与曝光份额阶段对比</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/byteview/dashboard/03_root_cause.png" alt="ByteView 根因归因看板" /><figcaption class="carousel-caption">03 根因归因：腰部创作者供给下降与推荐曝光迁移</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/byteview/dashboard/04_experiment.png" alt="ByteView AB 实验评估看板" /><figcaption class="carousel-caption">04 实验评估：供给侧激励有效，CTR 需单独优化</figcaption></figure>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" type="button" data-carousel-prev aria-label="上一张"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></button>
+            <span class="carousel-count" data-carousel-count>1 / 4</span>
+            <button class="carousel-btn" type="button" data-carousel-next aria-label="下一张"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m9 18 6-6-6-6"/></svg></button>
+          </div>
+        </div>
+        <div class="project-copy">
+          <h3>ByteView 内容平台 · 创作者增长与推荐效率优化</h3>
+          <div class="tags">
+            <span class="tag">增长运营</span><span class="tag">策略验证</span><span class="tag">用户增长</span><span class="tag">推荐分发</span><span class="tag">AB 实验</span><span class="tag">Tableau 看板</span>
+          </div>
+          <p><strong>GitHub：</strong><a href="https://github.com/cbumyl/byteview-portfolio" target="_blank" rel="noreferrer">github.com/cbumyl/byteview-portfolio</a></p>
+          <p>围绕内容平台创作者供给不足与推荐效率下滑问题，完成从指标体系搭建、归因诊断、激励策略设计到 AB 实验验证的完整增长运营项目。</p>
+          <ul class="bullet-list">
+            <li><strong>指标体系看板搭建：</strong>针对平台 DAU 平稳但泛知识垂类消费效率异常下滑的业务问题，围绕用户增长、创作者供给、推荐曝光、消费转化四大维度搭建 10+ 核心指标体系，整合 10 万用户、1 万创作者、321 万曝光全量数据，运用 SQL、Python、Tableau 搭建运营监控看板，支撑异常定位与策略复盘。</li>
+            <li><strong>链路拆解异常归因：</strong>为定位垂类效率下滑根因、避免业务误判，沿创作者供给、内容池质量、推荐曝光、用户消费全链路拆解诊断，最终定位核心诱因为腰部创作者日均投稿下降 <strong>46.2%</strong>、推荐曝光份额下降 <strong>21.2pp</strong>，导致垂类 CTR 下降 <strong>0.49pp</strong>、完播率下降 <strong>11.04pp</strong>，排除用户兴趣自然下滑的误判可能。</li>
+            <li><strong>策略设计实验验证：</strong>基于供给侧萎缩的核心结论，为修复内容生态、恢复分发效率，设计冷启动流量包 + 垂类创作任务的组合激励方案，通过 A/B 实验监测核心指标变化；实验后日均投稿率提升 <strong>5.2pp</strong>、优质内容占比提升 <strong>4.6pp</strong>，验证创作者激励策略对内容生态修复的有效性。</li>
+            <li><strong>分析方法沉淀提效：</strong>针对同类异动分析流程重复、口径不统一的问题，运用 Claude Code、Codex 辅助 SQL 校验、口径统一、归因拆解与汇报优化，沉淀"数据校验 - 异动识别 - 归因分析 - 策略实验 - 复盘汇报"标准化分析 SOP，提升同类增长问题的分析效率与结论一致性。</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="carousel" data-carousel>
+          <div class="carousel-frame">
+            <div class="carousel-track">
+              <figure class="carousel-slide"><img src="网页/quickmart/dashboard/01_overview.png" alt="QuickMart 增长总览看板" /><figcaption class="carousel-caption">01 增长总览：新用户、首单支付、D1 留存与核心漏斗</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/dashboard/02_channel.png" alt="QuickMart 渠道诊断看板" /><figcaption class="carousel-caption">02 渠道诊断：信息流渠道 A 是最大负贡献入口</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/dashboard/03_funnel.png" alt="QuickMart 漏斗诊断看板" /><figcaption class="carousel-caption">03 漏斗诊断：最大断点在结算到支付</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/dashboard/04_inventory.png" alt="QuickMart 库存供给证据链看板" /><figcaption class="carousel-caption">04 库存证据：爆款 SKU 缺货率异常上升</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/dashboard/05_abtest.png" alt="QuickMart AB 实验看板" /><figcaption class="carousel-caption">05 AB 实验：组合方案方向性改善</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/dashboard/06_action.png" alt="QuickMart 行动建议看板" /><figcaption class="carousel-caption">06 行动建议：短期修复交易后段，中期扩大实验验证</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/ppt/01_cover.png" alt="QuickMart 汇报 PPT 封面" /><figcaption class="carousel-caption">PPT 01：Executive Summary 与项目总览</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/ppt/02_overview.png" alt="QuickMart 汇报 PPT 增长诊断总览" /><figcaption class="carousel-caption">PPT 02：增长诊断总览</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/ppt/03_channel.png" alt="QuickMart 汇报 PPT 渠道诊断" /><figcaption class="carousel-caption">PPT 03：渠道诊断</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/ppt/04_funnel.png" alt="QuickMart 汇报 PPT 漏斗诊断" /><figcaption class="carousel-caption">PPT 04：交易后段与漏斗分析</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/ppt/05_inventory.png" alt="QuickMart 汇报 PPT 库存供给证据链" /><figcaption class="carousel-caption">PPT 05：库存供给证据链</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/ppt/06_abtest.png" alt="QuickMart 汇报 PPT AB 实验页" /><figcaption class="carousel-caption">PPT 06：AB 实验方向性验证</figcaption></figure>
+              <figure class="carousel-slide"><img src="网页/quickmart/ppt/07_action.png" alt="QuickMart 汇报 PPT 行动建议" /><figcaption class="carousel-caption">PPT 07：行动建议与表达边界</figcaption></figure>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" type="button" data-carousel-prev aria-label="上一张"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></button>
+            <span class="carousel-count" data-carousel-count>1 / 13</span>
+            <button class="carousel-btn" type="button" data-carousel-next aria-label="下一张"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m9 18 6-6-6-6"/></svg></button>
+          </div>
+        </div>
+        <div class="project-copy">
+          <h3>QuickMart 电商平台 - 用户转化与留存优化项目</h3>
+          <div class="tags">
+            <span class="tag">增长运营</span><span class="tag">策略验证</span><span class="tag">用户增长</span><span class="tag">漏斗分析</span><span class="tag">AB 实验</span><span class="tag">Tableau 看板</span>
+          </div>
+          <p><strong>GitHub：</strong><a href="https://github.com/cbumyl/quickmart-portfolio" target="_blank" rel="noreferrer">github.com/cbumyl/quickmart-portfolio</a>｜2026.02 - 2026.03</p>
+          <p>围绕即时零售电商平台新用户首单支付率下降和 D1 留存低迷问题，完成从数据基础搭建、异动归因、AB 实验到 Tableau 看板维护的完整转化优化项目。</p>
+          <ul class="bullet-list">
+            <li><strong>数据基础搭建与质量管控：</strong>针对即时零售电商平台新用户首单支付率下降和 D1 留存低迷问题，整合 <strong>6 万用户、16.7 万行为事件、6.24 万库存快照</strong>数据，构建用户、渠道、SKU 等 <strong>10 张原始业务表</strong>；使用 <strong>Python（pandas/numpy）+ SQL + Excel 数据透视表</strong>完成数据清洗、重构与标准化，设计多维度校验脚本，输出 Markdown 校验报告，将数据异常率从 <strong>1.19% 降至 0.2%</strong>，校验覆盖率 <strong>100%</strong>，为 Tableau 看板提供可复用数据源。</li>
+            <li><strong>异动分析与看板维护：</strong>搭建<strong>首单支付率、D1 留存率、渠道贡献、SKU 库存覆盖率</strong>等 <strong>12 项核心指标体系</strong>，结合漏斗分析和维度下钻，对不同渠道和城市进行交叉分析；发现信息流渠道负贡献及爆款 SKU 缺货为转化下降核心原因（<strong>结算 -> 支付下降 16.8pp</strong>，高缺货城市转化明显下滑），形成完整归因链，输出可落地优化报告与建议，并将分析指标独立封装于 Tableau 看板，便于后续跟踪、监控和数据复盘。</li>
+            <li><strong>AB 实验与成果沉淀：</strong>针对库存不足问题，设计<strong>"库存提示 + 替代推荐 + 优惠券提醒"</strong>组合优化 AB 实验，将符合条件的新用户按逻辑分组监测指标变化，通过 AI Agent 拆解实验逻辑、生成分组脚本；实验结果显示<strong>首单支付率从 4.05% 提升至 4.69%</strong>（相对提升 <strong>15.8%</strong>），<strong>结算 -> 支付转化率提升 2.60pp</strong>；输出 <strong>6 页 Tableau 看板、指标口径字典及 GitHub 交付版</strong>。</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image">
+          <img src="网页/apple-strategy.webp" alt="Apple Intelligence 增长策略项目" />
+        </div>
+        <div class="project-copy">
+          <h3>Apple Intelligence 增长策略研究 · 行业研究与商业分析</h3>
+          <div class="tags">
+            <span class="tag">行业研究</span><span class="tag">增长测算</span><span class="tag">商业分析</span><span class="tag">英文报告</span>
+          </div>
+          <p>围绕 GenAI 向 Agentic AI 迁移，完成竞品与行业调研、增长策略建模、商业测算和结构化汇报交付。</p>
+          <ul class="bullet-list">
+            <li><strong>竞品与行业深度调研：</strong>交叉验证 43 条行业资料，梳理 GenAI 手机渗透率从 <strong>19%</strong> 增长至 <strong>70%</strong>（2024-2028）的结构性趋势，建立覆盖 5 大维度、18 项指标的竞品研究框架，输出商赛级分析报告。</li>
+            <li><strong>增长策略建模与商业测算：</strong>构建"技术基础 - 隐私护城河 - 增长引擎"三支柱策略框架，完成 3 年百亿美元投入与收入路径测算，提出 2030 年服务收入超千亿美元目标，测算误差控制在 <strong>5%</strong> 以内。</li>
+            <li><strong>结构化汇报交付：</strong>运用 Claude Code 等 AI Agent 优化分析逻辑与报告结构，产出 15 页英文 PPT 及摘要，将复杂行业信息转化为"趋势判断 - 竞争定位 - 增长路径"结构化汇报，获课程满分。</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image">
+          <img src="网页/xiaohongshu-douyin.webp" alt="小红书抖音 AI 知识自媒体运营" />
+        </div>
+        <div class="project-copy">
+          <h3>小红书 / 抖音 AI 知识个人 IP 自媒体账号运营项目</h3>
+          <div class="tags">
+            <span class="tag">自媒体运营</span><span class="tag">内容策划</span><span class="tag">AI 提效</span><span class="tag">数据分析</span><span class="tag">增长策略</span>
+          </div>
+          <p>2026.05 - 至今</p>
+          <p>独立运营 AI 知识类账号，完成从人群锚定、内容矩阵搭建、爆款生产到数据复盘迭代的完整冷启动增长闭环。</p>
+          <ul class="bullet-list">
+            <li><strong>人群锚定内容规划：</strong>针对 AI 工具赛道内容同质化、冷启动阶段受众定位模糊的痛点，聚焦 AI 办公提效、AI Agent、AI PPT、知识库搭建细分方向，锚定学生、职场人、AI 工具学习者核心人群，拆解同类账号选题结构、评论需求与表达逻辑，搭建"工具教程 - 项目展示 - 工作流拆解"三维内容矩阵。</li>
+            <li><strong>爆款选题内容生产：</strong>为解决冷启动流量破圈、内容产出效率低的问题，借助 Claude Code、Codex 及 dbskill 等开源工具，完成用户痛点拆解、选题设计、口播优化与标题打磨，独立覆盖脚本、封面、视频制作全流程；小红书 5 月 9 日冷启动至今发布 6 条作品，累计涨粉 <strong>500+</strong>、获赞藏 <strong>5000+</strong>，单条 AI 教学视频最高播放 <strong>1.6 万</strong>、点赞 <strong>600+</strong>、收藏 <strong>1200+</strong>。</li>
+            <li><strong>数据复盘策略迭代：</strong>为优化内容转化效率、放大爆款效应，持续监测播放、点赞、收藏、评论核心运营指标，拆解不同内容类型的转化差异，验证"可复用 AI 教程""项目成果展示"两类内容收藏转化最优并调整内容占比；小红书项目分享单条播放 <strong>1 万+</strong>、赞藏双 <strong>400+</strong>，抖音 AI Agent 教学视频播放 <strong>7 万+</strong>、点赞 <strong>2100+</strong>、收藏 <strong>2700+</strong>。</li>
+            <li><strong>AI 提效流程沉淀：</strong>针对内容生产重复工作多、选题命中率不稳定的问题，以 Claude Code、Codex 为核心搭建标准化内容生产工作流，沉淀"信息获取 - 选题判断 - 脚本生产 - 发布测试 - 数据复盘"全链路运营 SOP，显著提升 AI 知识类内容生产效率与选题精准度。</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image">
+          <img src="网页/personal-notes-app.webp" alt="个人复盘成长 App 产品化项目" />
+        </div>
+        <div class="project-copy">
+          <h3>个人复盘成长 App 产品化项目｜基于开源项目 Memos 二次开发</h3>
+          <div class="tags">
+            <span class="tag">产品设计</span><span class="tag">需求拆解</span><span class="tag">AI Agent</span><span class="tag">工作流自动化</span><span class="tag">知识管理</span><span class="tag">Memos 二次开发</span>
+          </div>
+          <p>基于开源项目 Memos 二次开发，针对个人学习记录、项目复盘、素材存储分散的痛点，构建从记录输入到内容输出的完整知识管理产品。</p>
+          <ul class="bullet-list">
+            <li><strong>需求拆解路径设计：</strong>针对个人学习记录、项目复盘、素材存储分散，知识难以复用的痛点，拆解信息采集、结构化沉淀、标签检索、复盘输出四大核心场景，基于 Memos 开源项目二次开发，重构适配个人成长、AI 内容生产、项目复盘的用户使用路径。</li>
+            <li><strong>功能设计体验优化：</strong>为降低记录与检索成本、提升知识沉淀效率，围绕高频记录、项目归档、内容检索、复盘回顾核心需求，完成定制化功能设计、页面结构调整与 UI 交互优化，重点迭代标签体系、时间线结构与内容分类逻辑，实现学习笔记、项目过程、选题素材的可持续沉淀与高效复用。</li>
+            <li><strong>云端同步流程搭建：</strong>为打通数据孤岛、实现知识调用自动化，对接云端数据库实现内容拉取与数据同步，借助 Claude Code、Codex 完成需求拆解、代码修改、功能调试，搭建「记录输入 - 数据同步 - 内容检索 - 复盘输出」AI Agent 自动化工作流，提升个人知识管理与项目复盘效率。</li>
+            <li><strong>产品迭代业务赋能：</strong>为验证产品价值、形成知识应用闭环，将产品落地应用于 AI 自媒体选题、项目复盘、口播素材整理、工作流沉淀等场景，基于实际使用卡点持续迭代功能结构，形成从知识记录到内容输出的完整闭环，支撑 AI 教学视频、项目案例、Agent 工作流的持续内容生产。</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section class="container skills" id="skills">
+      <div class="section-title"><h2>能力与技能</h2><span>Capabilities</span></div>
+      <div class="skills-panel">
+        <article class="skill-col">
+          <div class="skill-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg>A. 数据分析</div>
+          <div class="skill-tags"><span>Excel 透视表</span><span>VLOOKUP</span><span>SQL</span><span>Python pandas</span><span>Tableau</span><span>数据清洗</span><span>数据监控</span><span>分析报告</span></div>
+        </article>
+        <article class="skill-col">
+          <div class="skill-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7l-8-4Z"/><path d="m9 12 2 2 4-5"/></svg>B. 运营能力</div>
+          <div class="skill-tags"><span>用户分层</span><span>指标体系</span><span>漏斗分析</span><span>归因诊断</span><span>AB 实验</span><span>策略设计</span><span>竞品分析</span><span>复盘输出</span></div>
+        </article>
+        <article class="skill-col">
+          <div class="skill-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M2 12h20"/><path d="m6 6 12 12M18 6 6 18"/></svg>C. 交付能力</div>
+          <div class="skill-tags"><span>Tableau 看板</span><span>麦肯锡风格 PPT</span><span>分析报告</span><span>结构化汇报</span><span>结论 - 证据 - 动作</span><span>跨部门协同</span><span>英文资料研读</span></div>
+        </article>
+        <article class="skill-col">
+          <div class="skill-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>D. AI 提效</div>
+          <div class="skill-tags"><span>GPT</span><span>Claude</span><span>Gemini</span><span>Cursor</span><span>Claude Code</span><span>多 AI Agent</span><span>提示词调试</span><span>流程自动化</span><span>模板生成</span><span>图表产出</span></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 李泽涛 · 版权所有</div>
+      <div class="footer-icons" aria-label="联系方式">
+        <a href="mailto:yeurekal@gmail.com" aria-label="发送邮件"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+        <a href="https://github.com/ylylyl123" target="_blank" rel="noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3c3 0 6-2 6-6.5 0-1.3-.5-2.6-1.4-3.5.1-.4.6-1.8-.2-3.5 0 0-1.1-.3-3.6 1.3a12.3 12.3 0 0 0-6.6 0C5.7 1.2 4.6 1.5 4.6 1.5c-.8 1.7-.3 3.1-.2 3.5A5 5 0 0 0 3 8.5C3 13 6 15 9 15a4.8 4.8 0 0 0-1 3v4"/><path d="M9 18c-4.5 2-5-2-7-2"/></svg></a>
+        <a href="#top" aria-label="返回顶部"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="m8 12 4-4 4 4"/><path d="M12 16V8"/></svg></a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+      const track = carousel.querySelector(".carousel-track");
+      const slides = Array.from(carousel.querySelectorAll(".carousel-slide"));
+      const count = carousel.querySelector("[data-carousel-count]");
+      const prev = carousel.querySelector("[data-carousel-prev]");
+      const next = carousel.querySelector("[data-carousel-next]");
+      let index = 0;
+
+      function render() {
+        track.style.transform = `translateX(${-index * 100}%)`;
+        count.textContent = `${index + 1} / ${slides.length}`;
+      }
+
+      prev.addEventListener("click", () => {
+        index = (index - 1 + slides.length) % slides.length;
+        render();
+      });
+
+      next.addEventListener("click", () => {
+        index = (index + 1) % slides.length;
+        render();
+      });
+
+      render();
+    });
+  </script>
+</body>
+</html>
